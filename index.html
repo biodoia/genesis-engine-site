@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Innovative Software Solutions for Modern Business - Sergio Martinelli">
+    <title>Genesis Engine | Innovative Software Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #e8eaed;
+            background: #0a0e1a;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0a0e1a 0%, #1a1f3a 100%);
+            border-bottom: 1px solid #1e3a8a;
+            padding: 60px 0 80px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .tagline {
+            font-size: 20px;
+            color: #9ca3af;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        /* Main Content */
+        main {
+            padding: 80px 0;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+        }
+
+        .intro {
+            background: #0f1629;
+            border: 1px solid #1e3a8a;
+            border-radius: 12px;
+            padding: 48px;
+            margin-bottom: 60px;
+        }
+
+        .intro p {
+            font-size: 18px;
+            color: #d1d5db;
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #0f1629 0%, #1a1f3a 100%);
+            border: 1px solid #1e3a8a;
+            border-radius: 12px;
+            padding: 40px 32px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(59, 130, 246, 0.15);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+
+        .service-card p {
+            color: #9ca3af;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .service-status {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 6px 12px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid #1e3a8a;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #60a5fa;
+            font-weight: 500;
+        }
+
+        .service-status.live {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: #065f46;
+            color: #34d399;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0e1a;
+            border-top: 1px solid #1e3a8a;
+            padding: 60px 0 40px;
+            margin-top: 100px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #3b82f6;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-section p {
+            color: #9ca3af;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        .owner-info {
+            padding-top: 32px;
+            border-top: 1px solid #1e3a8a;
+            text-align: center;
+        }
+
+        .owner-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #3b82f6;
+            margin-bottom: 12px;
+        }
+
+        .copyright {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .intro {
+                padding: 32px 24px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">GENESIS ENGINE</div>
+            <h1>Innovative Software Solutions<br>for Modern Business</h1>
+            <p class="tagline">
+                Enterprise-grade technology platforms designed to drive growth,
+                efficiency, and digital transformation.
+            </p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="intro">
+                <p>
+                    <strong>Genesis Engine</strong> delivers cutting-edge software solutions
+                    that empower businesses to scale rapidly and compete effectively in the
+                    digital economy. Our platform combines advanced technology with strategic
+                    market intelligence to create high-performance applications.
+                </p>
+                <p>
+                    We specialize in rapid development and deployment of enterprise SaaS
+                    solutions, leveraging modern architectures, real-time data analysis,
+                    and automated workflow optimization to deliver exceptional business value.
+                </p>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Our Solutions</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <span class="service-icon">🔍</span>
+                        <h3>Market Intelligence</h3>
+                        <p>
+                            Advanced analytics platform that identifies emerging business
+                            opportunities through real-time market data aggregation and
+                            trend analysis.
+                        </p>
+                        <span class="service-status live">Production</span>
+                    </div>
+
+                    <div class="service-card">
+                        <span class="service-icon">🎯</span>
+                        <h3>Strategic Advisory</h3>
+                        <p>
+                            Multi-dimensional evaluation framework for validating business
+                            concepts across market viability, technical feasibility,
+                            and financial performance.
+                        </p>
+                        <span class="service-status live">Production</span>
+                    </div>
+
+                    <div class="service-card">
+                        <span class="service-icon">⚙️</span>
+                        <h3>Rapid Development</h3>
+                        <p>
+                            Accelerated application development platform generating
+                            production-ready SaaS solutions with complete infrastructure,
+                            security, and deployment automation.
+                        </p>
+                        <span class="service-status">In Development</span>
+                    </div>
+
+                    <div class="service-card">
+                        <span class="service-icon">📈</span>
+                        <h3>Performance Optimization</h3>
+                        <p>
+                            Continuous improvement system that monitors application
+                            performance, user engagement, and business metrics to
+                            drive data-driven optimization decisions.
+                        </p>
+                        <span class="service-status">Coming Soon</span>
+                    </div>
+
+                    <div class="service-card">
+                        <span class="service-icon">🚀</span>
+                        <h3>Cloud Infrastructure</h3>
+                        <p>
+                            Enterprise-grade cloud deployment and orchestration platform
+                            ensuring high availability, automatic scaling, and optimal
+                            resource utilization.
+                        </p>
+                        <span class="service-status">Coming Soon</span>
+                    </div>
+
+                    <div class="service-card">
+                        <span class="service-icon">🔒</span>
+                        <h3>Security & Compliance</h3>
+                        <p>
+                            Comprehensive security framework with automated vulnerability
+                            scanning, compliance monitoring, and industry-standard
+                            encryption protocols.
+                        </p>
+                        <span class="service-status">Coming Soon</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Technology Platform</h2>
+                <div class="intro">
+                    <p>
+                        Our infrastructure leverages state-of-the-art technologies including
+                        cloud-native architectures, real-time data processing, and distributed
+                        systems to deliver scalable, reliable, and high-performance solutions.
+                    </p>
+                    <p>
+                        <strong>Platform URL:</strong> saasfeto-production.up.railway.app
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <p>Genesis Engine</p>
+                    <p>Software Development & Innovation</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <p>Enterprise SaaS Solutions</p>
+                    <p>Cloud Infrastructure</p>
+                    <p>Technology Consulting</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <p>Registered Business Entity</p>
+                    <p>All Rights Reserved</p>
+                </div>
+            </div>
+
+            <div class="owner-info">
+                <div class="owner-name">Sergio Martinelli</div>
+                <p class="copyright">© 2025 Genesis Engine. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
