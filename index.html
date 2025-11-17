@@ -26,11 +26,103 @@
             padding: 0 24px;
         }
 
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
         /* Header */
         header {
             background: linear-gradient(135deg, #0a0e1a 0%, #1a1f3a 100%);
             border-bottom: 1px solid #1e3a8a;
             padding: 60px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80&auto=format&fit=crop') center/cover;
+            opacity: 0.08;
+            z-index: 0;
+        }
+
+        header .container {
+            position: relative;
+            z-index: 1;
         }
 
         .logo {
@@ -39,6 +131,7 @@
             color: #3b82f6;
             margin-bottom: 16px;
             letter-spacing: -0.5px;
+            animation: fadeIn 1s ease-out;
         }
 
         h1 {
@@ -47,6 +140,7 @@
             color: #ffffff;
             margin-bottom: 24px;
             line-height: 1.2;
+            animation: fadeInUp 1s ease-out 0.2s both;
         }
 
         .tagline {
@@ -54,6 +148,7 @@
             color: #9ca3af;
             max-width: 600px;
             line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.4s both;
         }
 
         /* Main Content */
@@ -90,6 +185,7 @@
             border-radius: 12px;
             padding: 48px;
             margin-bottom: 60px;
+            animation: fadeInUp 1s ease-out 0.6s both;
         }
 
         .intro p {
@@ -101,6 +197,91 @@
 
         .intro p:last-child {
             margin-bottom: 0;
+        }
+
+        /* Animated Banner Sections */
+        .banner {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6, #1e3a8a);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            border-radius: 16px;
+            padding: 60px 48px;
+            margin: 80px 0;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80&auto=format&fit=crop') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .banner p {
+            font-size: 20px;
+            color: #e8eaed;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .stats-banner {
+            background: linear-gradient(135deg, #0f1629 0%, #1a1f3a 100%);
+            border: 1px solid #1e3a8a;
+            border-radius: 16px;
+            padding: 60px 48px;
+            margin: 80px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item {
+            animation: fadeInUp 1s ease-out both;
+        }
+
+        .stat-item:nth-child(1) { animation-delay: 0.2s; }
+        .stat-item:nth-child(2) { animation-delay: 0.4s; }
+        .stat-item:nth-child(3) { animation-delay: 0.6s; }
+        .stat-item:nth-child(4) { animation-delay: 0.8s; }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Services Grid */
@@ -117,18 +298,68 @@
             border-radius: 12px;
             padding: 40px 32px;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out both;
         }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:nth-child(1)::before {
+            background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop');
+        }
+        .service-card:nth-child(2)::before {
+            background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80&auto=format&fit=crop');
+        }
+        .service-card:nth-child(3)::before {
+            background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80&auto=format&fit=crop');
+        }
+        .service-card:nth-child(4)::before {
+            background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format&fit=crop');
+        }
+        .service-card:nth-child(5)::before {
+            background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80&auto=format&fit=crop');
+        }
+        .service-card:nth-child(6)::before {
+            background-image: url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80&auto=format&fit=crop');
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+        .service-card:nth-child(6) { animation-delay: 0.6s; }
 
         .service-card:hover {
             border-color: #3b82f6;
             transform: translateY(-4px);
             box-shadow: 0 12px 24px rgba(59, 130, 246, 0.15);
+            background: linear-gradient(135deg, #1a1f3a 0%, #1e3a8a 100%);
+        }
+
+        .service-card:hover::before {
+            opacity: 0.08;
         }
 
         .service-icon {
             font-size: 40px;
             margin-bottom: 24px;
             display: block;
+            position: relative;
+            z-index: 1;
+            animation: float 3s ease-in-out infinite;
         }
 
         .service-card h3 {
@@ -136,12 +367,16 @@
             font-weight: 600;
             color: #ffffff;
             margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
         }
 
         .service-card p {
             color: #9ca3af;
             font-size: 16px;
             line-height: 1.7;
+            position: relative;
+            z-index: 1;
         }
 
         .service-status {
@@ -154,12 +389,15 @@
             font-size: 13px;
             color: #60a5fa;
             font-weight: 500;
+            position: relative;
+            z-index: 1;
         }
 
         .service-status.live {
             background: rgba(16, 185, 129, 0.1);
             border-color: #065f46;
             color: #34d399;
+            animation: pulse 2s ease-in-out infinite;
         }
 
         /* Footer */
@@ -231,6 +469,35 @@
 
             .footer-content {
                 flex-direction: column;
+            }
+
+            .banner {
+                padding: 40px 24px;
+            }
+
+            .banner h2 {
+                font-size: 28px;
+            }
+
+            .banner p {
+                font-size: 16px;
+            }
+
+            .stats-banner {
+                padding: 40px 24px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            .stat-label {
+                font-size: 14px;
             }
         }
     </style>
@@ -334,6 +601,28 @@
                 </div>
             </section>
 
+            <!-- Animated Stats Banner -->
+            <div class="stats-banner">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">99.9%</span>
+                        <span class="stat-label">Uptime</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Support</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Deployments</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">10x</span>
+                        <span class="stat-label">Faster Time to Market</span>
+                    </div>
+                </div>
+            </div>
+
             <section class="section">
                 <h2 class="section-title">Technology Platform</h2>
                 <div class="intro">
@@ -343,10 +632,23 @@
                         systems to deliver scalable, reliable, and high-performance solutions.
                     </p>
                     <p>
-                        <strong>Platform URL:</strong> saasfeto-production.up.railway.app
+                        Built on enterprise-grade infrastructure with automated deployment pipelines,
+                        continuous integration, and comprehensive monitoring to ensure optimal
+                        performance and reliability at scale.
                     </p>
                 </div>
             </section>
+
+            <!-- Success Banner -->
+            <div class="banner">
+                <div class="banner-content">
+                    <h2>Transform Your Business with Cutting-Edge Technology</h2>
+                    <p>
+                        Join forward-thinking companies that leverage our platform to accelerate
+                        innovation, reduce development costs, and deliver exceptional customer experiences.
+                    </p>
+                </div>
+            </div>
         </div>
     </main>
 
